@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 """Async with Python"""
 import asyncio
+from typing import List
 
 wait_random = __import__('0-basic_async_syntax').wait_random
 
 
-async def wait_n(n: int, max_delay: int) -> list[float]:
+async def wait_n(n: int, max_delay: int) -> List[float]:
     """
     executing multiple coroutines at the same time with async
     Args:
@@ -14,5 +15,5 @@ async def wait_n(n: int, max_delay: int) -> list[float]:
     Returns:
         list of delays
     """
-    tasks: list = [wait_random(max_delay) for _ in range(n)]
+    tasks: List = [wait_random(max_delay) for _ in range(n)]
     return [await task for task in asyncio.as_completed(tasks)]
